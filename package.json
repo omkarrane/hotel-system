@@ -1,0 +1,22 @@
+{
+  "name": "hotel-system",
+  "version": "1.0.0",
+  "description": "A Hotel Management System API using Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omkarrane/hotel-system.git"
+  },
+  "author": "Omkar Rane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omkarrane/hotel-system/issues"
+  },
+  "homepage": "https://github.com/omkarrane/hotel-system#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
