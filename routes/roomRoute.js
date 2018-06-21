@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Room = require('./model/room');
+const mongoose = require('mongoose');
+const Room = require('../models/room');
 
 router.get('/add', (req, res) => {
     const room = new Room({

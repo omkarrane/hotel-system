@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Hotel = require('./models/hotel');
+const mongoose = require('mongoose');
+const Hotel = require('../models/hotel');
 
 router.get('/get/:hotel', (req, res) => {
     const hotel = req.params.hotel;
@@ -48,9 +49,9 @@ router.get('/delete/:hotel', (req, res) => {
 });
 
 router.post('/update/:hotel', (req, res) => {
-    const name = req.params.hotel;
+    const id = req.params.hotel;
     const hotel = req.body;
-    Hotel.updateHotel(name, hotel, (err, response) => {
+    Hotel.updateHotel(id, hotel, (err, response) => {
         if(err){
             console.log(err);
             res.json({success: false, msg: "Failed to update hotel"});

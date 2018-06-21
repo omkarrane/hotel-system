@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Booking = require('./model/booking');
+const mongoose = require('mongoose');
+const Booking = require('../models/booking');
 
 router.post('/add', (req, res) => {
     const booking = new Booking({

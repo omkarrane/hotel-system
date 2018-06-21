@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const RoomSchema = mongoose.Schema({
     _id: Schema.Types.ObjectId,
     hotel: { type: Schema.Types.ObjectId, ref: 'Hotel' },
-    room_no = {
+    room_no: {
         type: String,
         required: true
     },

@@ -9,15 +9,19 @@ const HotelSchema = mongoose.Schema({
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
     name: {
         type: String,
+        required: true
     },
     location: {
-        type: String
+        type: String,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     rating: {
         type: Number,
+        required: true,
         default: 0
     }
 });
@@ -47,9 +51,8 @@ module.exports.updateHotel = function(id, hotel, callback){
     const update = {
         name: hotel.name,
         location: hotel.location,
-        description: hotel.descrption,
-        rating: hotel.rating
+        description: hotel.descrption
     };
-    const options = { upsert: false, new: false, setDefaultsOnInsert: false };    
+    const options = { upsert: false, new: false, setDefaultsOnInsert: true };    
     Hotel.update(query, update, options, callback);
 }
