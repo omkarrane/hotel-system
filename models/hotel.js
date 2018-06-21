@@ -51,7 +51,7 @@ module.exports.updateHotel = function(id, hotel, callback){
     const update = {
         name: hotel.name,
         location: hotel.location,
-        description: hotel.descrption
+        description: hotel.description
     };
     const options = { upsert: false, new: false, setDefaultsOnInsert: true };    
     Hotel.update(query, update, options, callback);

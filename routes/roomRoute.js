@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Room = require('../models/room');
 
-router.get('/add', (req, res) => {
+router.post('/add', (req, res) => {
     const room = new Room({
         _id: mongoose.Types.ObjectId(),
         hotel: req.body.hotel,

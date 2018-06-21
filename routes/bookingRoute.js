@@ -8,8 +8,8 @@ router.post('/add', (req, res) => {
         _id: mongoose.Types.ObjectId(),
         room: req.body.room,
         user: req.body.user,
-        booking_from: req.body.booking_from,
-        booking_to: req.body.booking_to
+        booking_from: new Date(req.body.booking_from),
+        booking_till: new Date(req.body.booking_till)
     });
     Booking.addBooking(booking, (err, response) => {
         if(err){
@@ -23,8 +23,8 @@ router.post('/add', (req, res) => {
 });
 
 router.post('/get/rooms', (req, res) => {
-    const date_from = req.body.date_from;
-    const date_till = req.body.date_till;
+    const date_from = new Date(req.body.date_from);
+    const date_till = new Date(req.body.date_till);
     Booking.getRoomsList(date_from, date_till, (err, response) => {
         if(err){
             console.log(err);

@@ -3,6 +3,7 @@ const config = require('../config/database');
 const Room = require('./room');
 const User = require('./user');
 const Schema = mongoose.Schema;
+var ObjectID = require('mongodb').ObjectID;
 
 const BookingSchema = mongoose.Schema({
     _id: Schema.Types.ObjectId,
@@ -28,7 +29,7 @@ module.exports.addBooking = function(newBooking, callback){
 
 // Get All Rooms which falls between these dates and then exclude them
 module.exports.getRoomsList = function(date_from, date_till, callback){
-    Booking.find({
+    Booking.find({}, {_id: 0, room: 1}, {
         $or: [
             {
                 $and: [{'booking_from': {$lte: date_from}}, {'booking_till': {$gte: date_till}}]
@@ -42,8 +43,16 @@ module.exports.getRoomsList = function(date_from, date_till, callback){
         ]
     }, (err, rooms) => {
         if(err) throw err;
-        Rooms.find({
-            '_id': {$nin: rooms.room}
-        }, callback);
+        Room.find({}, (err, all_rooms) => {
+            console.log(rooms);
+            for(var i=0;i<rooms.length;i++){
+                for(var j=0;j<all_rooms.length;j++){
+                    if(all_rooms[j]._id.toString() == rooms[i].room.toString()){
+                        all_rooms.splice(j, 1);
+                    }
+                }
+            }
+            callback(false, all_rooms);
+        });
     });    
 }

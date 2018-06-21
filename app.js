@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const userRoute = require('./routes/userRoute');
 const hotelRoute = require('./routes/hotelRoute');
 const roomRoute = require('./routes/roomRoute');
+const bookingRoute = require('./routes/bookingRoute');
 const config = require('./config/database');
 
 // Connect to Database
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use('/api/user', userRoute);
 app.use('/api/hotel', hotelRoute);
 app.use('/api/room', roomRoute);
+app.use('/api/booking', bookingRoute);
 
 app.listen(3000, () => {
     console.log('Server is listening on port 3000');

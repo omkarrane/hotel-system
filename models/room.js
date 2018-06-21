@@ -10,10 +10,6 @@ const RoomSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    room_type: {
-        type: String,
-        required: true
-    },
     tariff: {
         type: Number,
         default: 0
